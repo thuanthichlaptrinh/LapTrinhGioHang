@@ -1,0 +1,32 @@
+﻿.UserSession {
+    position: relative; /* Để danh sách có thể được định vị chính xác */
+    color: red; /* Màu chữ của tên người dùng */
+    font-weight: bold; /* Đậm chữ */
+    cursor: pointer; /* Hiển thị con trỏ khi hover */
+    display: inline-block; /* Đảm bảo không bị nhảy dòng */
+}
+
+.UserList:before {
+    content: "";
+    background-color: transparent; /* Màu nền của phần tử :before */
+    display: block; /* Ẩn phần tử :before */
+    position: absolute;
+    top: -20px; /* Khoảng cách từ phần tử trước */
+    width: 140px;
+    height: 30px;
+}
+
+.UserList {
+    display: none; /* Ẩn danh sách mặc định */
+    position: absolute; /* Đặt vị trí danh sách thả xuống */
+    right: 126px;
+    background-color: white; /* Màu nền */
+    border: 1px solid #ccc; /* Viền */
+    z-index: 1000; /* Đảm bảo danh sách nằm trên các phần tử khác */
+}
+
+    /* Hiển thị danh sách khi hover vào tên người dùng hoặc danh sách */
+    .UserSession:hover + .UserList,
+    .UserList:hover {
+        display: block; /* Hiển thị danh sách khi hover */
+    }

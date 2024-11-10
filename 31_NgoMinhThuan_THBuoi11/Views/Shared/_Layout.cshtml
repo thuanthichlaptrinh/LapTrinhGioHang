@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Content/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+    <link href="~/Content/Assetss/StyleSheet1.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="container-fluid p-0">
+        <div class="bg-secondary">
+            <div class="container p-0">
+                <div class="row p-4">
+                    <div class="col-6">
+                        <form action="/" method="post" class="d-flex">
+                            <input type="search" placeholder="Nhập từ bạn cần tìm?" class="form-control" />
+                            <button type="submit" style="margin-left: -10px; width: 80px" class="form-control text-white bg-dark">Search</button>
+                        </form>
+                    </div>
+                    <div class="col-6">
+                        <div class="float-end">
+                            @Html.ActionLink("Đăng ký", "Register", "KhachHang", null, new { @class = "me-auto", style = "text-decoration: none; color: black; font-weight: bold" }) |
+                            @Html.ActionLink("Đăng nhập", "Login", "KhachHang", null, new { style = "text-decoration: none; color: black; font-weight: bold" })
+                            <a href="~/DatHang/XemGioHang" class="mx-4">
+                                <img src="~/Content/Images/cart.png" style="width: 26px" alt="Alternate Text" />
+                                @if (ViewBag.SoLuong == 0)
+                                {
+                                    <span>(0)</span>
+                                }
+                                else
+                                {
+                                    <span>(@ViewBag.SoLuong)</span>
+                                }
+                            </a>
+
+                            <div class="d-inline mt-4 mx-2" style="text-decoration: none; color: black">
+                                @{
+                                    var kh = (_31_NgoMinhThuan_THBuoi11.Models.tbl_KhachHang)Session["kh"];
+                                    if (kh != null)
+                                    {
+                                        <span class="UserSession">Chào bạn, @kh.TenKH</span>
+                                        <ul class="UserList nav">
+                                            <li class="nav-item">
+                                                <a href="~/KhachHang/Logout" class="nav-link">Đăng xuất</a> <!-- Thay đổi đường dẫn cho đúng -->
+                                            </li>
+                                        </ul>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-dark">
+            <div class="container p-0">
+                <div class="row">
+                    <div>
+                        <ul class="nav float-end">
+                            <li class="nav-item">
+                                <a href="~/Home/Index" class="nav-link">Trang chủ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Giới thiệu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Hướng dẫn sử dụng</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Liên hệ</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        @RenderBody()
+    </main>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

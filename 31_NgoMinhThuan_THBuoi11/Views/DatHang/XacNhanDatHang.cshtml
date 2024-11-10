@@ -1,0 +1,40 @@
+﻿@model _31_NgoMinhThuan_THBuoi11.Models.GioHang
+
+@{
+    ViewBag.Title = "XacNhanDatHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (ViewBag.k != null)
+{
+    var khach = (_31_NgoMinhThuan_THBuoi11.Models.tbl_KhachHang)ViewBag.k;
+    if (Model != null)
+    {
+        <form action="~/DatHang/DatHang" method="post">
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <h2>Thông tin đặt hàng</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tên khách hàng: @khach.TenKH</td>
+                    <td>Địa chỉ: @khach.DiaChi</td>
+                </tr>
+                <tr>
+                    <td>Ngày đặt hàng: @DateTime.Now.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        Ngày giao hàng: 
+                        <input type="date" name="txtNgayGiao" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Đặt hàng" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    }
+
+}

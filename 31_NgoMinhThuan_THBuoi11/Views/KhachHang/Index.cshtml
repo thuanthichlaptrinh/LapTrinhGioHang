@@ -1,0 +1,32 @@
+﻿@model List<_31_NgoMinhThuan_THBuoi11.Models.tbl_SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="mt-3">
+    <h3>Danh sách sản phẩm</h3>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-3 col-md-3 col-sm-12 mb-4">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/Content/Images/@item.HinhAnh" class="w-100" alt="Alternate Text" />
+                    </a>
+                    <div class="card-body mx-2">
+                        <p class="card-title text-center">@item.TenSP</p>
+                        <p class="card-text text-center">
+                            @String.Format("{0:0,0}", item.DonGia) VND
+                        </p>
+                        <a href="~/DatHang/ThemVaoGioHang?msp=@item.MaSanPham">
+                            <img src="~/Content/Images/ChonMua.jpg" class="d-block mx-auto" alt="Alternate Text" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
